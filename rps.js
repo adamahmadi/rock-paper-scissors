@@ -30,3 +30,9 @@ function getPlayerChoice () {
 }
     /* Testing getPlayerChoice function */
     console.log (getPlayerChoice())
+
+/* Declaring variables for players scores */
+let playerScore = 0;
+let computerScore = 0;
+
+console.log (computerScore)
