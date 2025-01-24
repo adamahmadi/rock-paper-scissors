@@ -14,4 +14,19 @@ function getComputerChoice () {
     }
 
     /* Testing function for functionality */
-console.log (getComputerChoice())
+    console.log (getComputerChoice())
+
+/* Writing second function for get player choice */
+function getPlayerChoice () {
+    let userChoice = prompt ("Choose your option of Rock, Paper or Scissors!");
+
+    if (userChoice === "Rock") {
+        return "Rock";
+    } else if (userChoice === "Paper") {
+        return "Paper";
+    } if (userChoice === "Scissors") {
+        return "Scissors";
+    }
+}
+    /* Testing getPlayerChoice function */
+    console.log (getPlayerChoice())
