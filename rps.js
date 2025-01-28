@@ -5,26 +5,27 @@ function getComputerChoice () {
 
     /* Return corresponding choice based on the random number */
     if (randomNumber === 0) {
-        return "Rock!";
+        return "rock";
     } else if (randomNumber === 1) {
-        return "Paper!";
+        return "paper";
     } if (randomNumber === 2) {
-        return "Scissors!";
+        return "scissors";
     }
     }
 
     /* Testing function for functionality */
     console.log (getComputerChoice())
 
-/* Writing second function for get player choice */
+/* Writing second function for get player choice. Additional edit to include case insensitivity */ 
 function getPlayerChoice () {
     let userChoice = prompt ("Choose your option of Rock, Paper or Scissors!");
+    userChoice = userChoice.toLowerCase();
 
-    if (userChoice === "Rock") {
+    if (userChoice === "rock") {
         return "Rock";
-    } else if (userChoice === "Paper") {
+    } else if (userChoice === "paper") {
         return "Paper";
-    } if (userChoice === "Scissors") {
+    } if (userChoice === "scissors") {
         return "Scissors";
     }
 }
@@ -36,3 +37,24 @@ let playerScore = 0;
 let computerScore = 0;
 
 console.log (computerScore)
+
+/* Creating function to play a single round */
+function playRound (playerChoice , computerChoice) {
+    let result;
+    playerChoice = getPlayerChoice
+    computerChoice = getComputerChoice
+
+    if (playerChoice === computerChoice) {
+        result = "It\'s a tie!";
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        playerScore++;
+        result = "You win!";
+    } else {
+        computerScore++;
+        result = "Computer wins!";
+    }
+}
