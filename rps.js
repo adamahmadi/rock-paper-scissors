@@ -14,7 +14,7 @@ function getComputerChoice () {
     }
 
     /* Testing function for functionality */
-    console.log (getComputerChoice())
+    /* console.log (getComputerChoice()) */
 
 /* Writing second function for get player choice. Additional edit to include case insensitivity */ 
 function getPlayerChoice () {
@@ -22,39 +22,70 @@ function getPlayerChoice () {
     userChoice = userChoice.toLowerCase();
 
     if (userChoice === "rock") {
-        return "Rock";
+        return "rock";
     } else if (userChoice === "paper") {
-        return "Paper";
+        return "paper";
     } if (userChoice === "scissors") {
-        return "Scissors";
+        return "scissors";
     }
 }
     /* Testing getPlayerChoice function */
-    console.log (getPlayerChoice())
+    /* console.log (getPlayerChoice()) */
 
+/* console.log (computerScore) */
+
+/* Creating function to play a single round */
+function checkWinner (playerChoice , computerChoice) {
+    if (playerChoice == computerChoice) {
+        return "Tie";
+    } else if (
+        (playerChoice == "rock" && computerChoice == "scissors") ||
+        (playerChoice == "paper" && computerChoice == "rock") ||
+        (playerChoice == "scissors" && computerChoice == "paper")
+    )  {
+        return "Player";
+    } else {
+        return "Computer";
+    }
+}
+
+function playRound (playerChoice , computerChoice) {
+    const result = checkWinner (playerChoice , computerChoice);
+
+    if (result == "Tie") {
+        return "It\'s a tie!"
+    } else if (result == "Player") {
+        return `Player wins! ${playerChoice} beats ${computerChoice}`
+    } else if (result == "Computer") {
+        return `Computer wins! ${computerChoice} beats ${playerChoice}`
+    }
+
+}
+
+function game() {
 /* Declaring variables for players scores */
 let playerScore = 0;
 let computerScore = 0;
 
-console.log (computerScore)
-
-/* Creating function to play a single round */
-function playRound (playerChoice , computerChoice) {
-    let result;
-    playerChoice = getPlayerChoice
-    computerChoice = getComputerChoice
-
-    if (playerChoice === computerChoice) {
-        result = "It\'s a tie!";
-    } else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-        playerScore++;
-        result = "You win!";
-    } else {
-        computerScore++;
-        result = "Computer wins!";
+    for (let i = 0; i < 5; i++) {
+        const playerChoice = getPlayerChoice();
+        const computerChoice = getComputerChoice();
+        console.log (playRound (playerChoice , computerChoice));
+        console.log ("-------------------");
+        if (checkWinner (playerChoice , computerChoice) == "Player") {
+            playerScore++;
+        } else if (checkWinner (playerChoice , computerChoice) == "Computer") {
+            computerScore++;
     }
 }
+    console.log("Game Over!")
+    if (playerScore > computerScore) {
+       console.log("Player is the winner!");
+    } else if (computerScore > playerScore) {
+        console.log ("Computer wins!");
+    } else { (playerScore == computerScore)
+        console.log ("The game is a tie! Play again?");
+    }
+    }
+
+game()
